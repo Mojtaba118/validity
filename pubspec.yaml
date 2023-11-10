@@ -1,6 +1,8 @@
 name: validity
 description: A new Flutter package project.
 version: 0.0.1
+repository: https://github.com/Mojtaba118/validity.git
+# set website link for home page
 homepage:
 
 environment:
