@@ -13,7 +13,7 @@ class LessThan implements IValidator<num> {
   }
 
   @override
-  String message(BuildContext context) {
-    return errorMessage ?? "";
+  String? message(BuildContext context) {
+    return errorMessage;
   }
 }

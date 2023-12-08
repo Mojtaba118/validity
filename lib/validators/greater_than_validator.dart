@@ -7,13 +7,14 @@ class GreaterThan implements IValidator<num> {
 
   GreaterThan({required this.greater, this.errorMessage});
 
+  //! Warning: why you use num type
   @override
   bool isValid(BuildContext context, num? value) {
     return value != null && value > greater;
   }
 
   @override
-  String message(BuildContext context) {
-    return errorMessage ?? "";
+  String? message(BuildContext context) {
+    return errorMessage;
   }
 }

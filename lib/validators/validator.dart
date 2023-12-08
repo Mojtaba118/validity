@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
 abstract interface class IValidator<T> {
-  bool isValid(BuildContext context, T? value);
+  bool isValid(BuildContext context, T value);
 
-  String message(BuildContext context);
+  String? message(BuildContext context);
 }
 
 class Validator<T> {
@@ -13,9 +13,12 @@ class Validator<T> {
   Validator({required this.context, required this.value});
 
   String? schema(List<IValidator> validators) {
-    for (var validator in validators) {
-      if (!validator.isValid(context, value)) {
-        return validator.message(context);
+    const String defaultErrorMessage = "Something wrong occurred";
+    for (final validator in validators) {
+      final isValid = validator.isValid(context, value);
+      if (!isValid) {
+        final message = validator.message(context) ?? defaultErrorMessage;
+        return message;
       }
     }
     return null;
